@@ -1,4 +1,14 @@
 # Terraform to launch ec2 with docker compose
 
-terraform fmt -recursive
-# projectQuickStart
+- github repo to quickly launch new ec2s
+
+# Lint
+
+- terraform fmt -recursive
+
+# Guide
+
+```
+terraform init
+terraform apply -auto-approve
+```
