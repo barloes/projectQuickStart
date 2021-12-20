@@ -19,8 +19,8 @@ provider "aws" {
 module "ec2" {
   source = "./modules/ec2"
 
-  instance_type     = "t2.micro"
-  ami_id            = "ami-026f2ac5256dbee41"
+  instance_type     = "t3.small"
+  ami_id            = "ami-0254bf24935da26a5"
   name              = "cicdfyp"
   key_name          = "cicd"
   vpc_cidr          = "10.0.0.0/16"
