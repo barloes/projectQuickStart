@@ -35,7 +35,7 @@ resource "aws_iam_role_policy" "test_policy" {
         "Action" : [
           "s3:ListBucket"
         ],
-        "Resource" : "arn:aws:s3:::${bucket_name}"
+        "Resource" : "arn:aws:s3:::${var.bucket_name}"
 
       },
       {
@@ -43,8 +43,23 @@ resource "aws_iam_role_policy" "test_policy" {
         "Action" : [
           "s3:GetObject"
         ],
-        "Resource" : "arn:aws:s3:::${bucket_name}/*"
+        "Resource" : "arn:aws:s3:::${var.bucket_name}/*"
+        }, {
+        "Sid" : "AllowPushPull",
+        "Effect" : "Allow",
+        "Action" : [
+          "ecr:BatchGetImage",
+          "ecr:BatchCheckLayerAvailability",
+          "ecr:CompleteLayerUpload",
+          "ecr:GetDownloadUrlForLayer",
+          "ecr:InitiateLayerUpload",
+          "ecr:PutImage",
+          "ecr:UploadLayerPart",
+          "ecr:GetAuthorizationToken"
+        ],
+        "Resource" : "*"
       }
+
     ]
   })
 
