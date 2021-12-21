@@ -55,7 +55,11 @@ resource "aws_iam_role_policy" "test_policy" {
           "ecr:InitiateLayerUpload",
           "ecr:PutImage",
           "ecr:UploadLayerPart",
-          "ecr:GetAuthorizationToken"
+          "ecr:GetAuthorizationToken",
+          "iam:CreateUser",
+          "iam:AttachUserPolicy",
+          "iam:AttachUserPolicy",
+          "iam:CreateAccessKey "
         ],
         "Resource" : "*"
       }

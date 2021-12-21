@@ -12,3 +12,9 @@
 terraform init
 terraform apply -auto-approve
 ```
+
+# Log
+
+```
+journalctl -u cloud-final
+```

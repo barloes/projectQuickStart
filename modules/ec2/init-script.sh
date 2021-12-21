@@ -18,7 +18,6 @@ Content-Transfer-Encoding: 7bit
 Content-Disposition: attachment; filename="userdata.txt"
 
 #!/bin/bash
-/bin/echo "Hello World" >> /tmp/testfile.txt
 # sudo yum update -y
 # sudo amazon-linux-extras install docker
 # sudo yum install docker
@@ -33,14 +32,19 @@ bucket_name=junhuibucket
 project_name=cicdfyp
 aws_acc=642151248908.dkr.ecr.ap-southeast-1.amazonaws.com
 ecr_name=junhuiimage
-/bin/echo "aaa" >> /tmp/testfile.txt
-sudo service docker stop
-sudo service docker start
 
+cd /home/ec2-user
+sudo /bin/systemctl stop docker.service
+sudo /bin/systemctl start docker.service
 rm -rf /home/ec2-user/*
-aws s3 sync s3://$bucket_name/$project_name ./
+/bin/echo "restart docker service" >> log.txt
 
+aws s3 sync s3://$bucket_name/$project_name ./
+/bin/echo "sync s3" >> log.txt
 sudo aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin $aws_acc
+/bin/echo "ecr auth" >> log.txt
 docker pull $aws_acc/$ecr_name:cicdfypfe
+/bin/echo "pull image" >> log.txt
 docker-compose up -d
+/bin/echo "run image" >> log.txt
 --//--
