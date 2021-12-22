@@ -58,8 +58,8 @@ resource "aws_iam_role_policy" "test_policy" {
           "ecr:GetAuthorizationToken",
           "iam:CreateUser",
           "iam:AttachUserPolicy",
-          "iam:AttachUserPolicy",
-          "iam:CreateAccessKey "
+          "iam:CreateAccessKey",
+          "ecr:CreateRepository"
         ],
         "Resource" : "*"
       }

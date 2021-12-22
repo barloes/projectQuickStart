@@ -18,3 +18,5 @@ terraform apply -auto-approve
 ```
 journalctl -u cloud-final
 ```
+
+#docker-compose up -d -f docker-compose.fe docker-compose.be

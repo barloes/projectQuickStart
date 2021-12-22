@@ -45,6 +45,7 @@ sudo aws ecr get-login-password --region ap-southeast-1 | docker login --usernam
 /bin/echo "ecr auth" >> log.txt
 docker pull $aws_acc/$ecr_name:cicdfypfe
 /bin/echo "pull image" >> log.txt
-docker-compose up -d
+
+docker-compose up -d -f docker-compose.fe docker-compose.be
 /bin/echo "run image" >> log.txt
 --//--
