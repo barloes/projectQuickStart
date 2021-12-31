@@ -36,7 +36,7 @@ ecr_name=junhuiimage
 cd /home/ec2-user
 sudo /bin/systemctl stop docker.service
 sudo /bin/systemctl start docker.service
-rm -rf /home/ec2-user/*
+sudo rm -rf /home/ec2-user/*
 /bin/echo "restart docker service" >> log.txt
 
 aws s3 sync s3://$bucket_name/$project_name ./
@@ -46,6 +46,6 @@ sudo aws ecr get-login-password --region ap-southeast-1 | docker login --usernam
 docker pull $aws_acc/$ecr_name:cicdfypfe
 /bin/echo "pull image" >> log.txt
 
-docker-compose up -d -f docker-compose.fe docker-compose.be
+docker-compose build && docker-compose up -d
 /bin/echo "run image" >> log.txt
 --//--

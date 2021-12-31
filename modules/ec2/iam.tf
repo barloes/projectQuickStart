@@ -45,21 +45,10 @@ resource "aws_iam_role_policy" "test_policy" {
         ],
         "Resource" : "arn:aws:s3:::${var.bucket_name}/*"
         }, {
-        "Sid" : "AllowPushPull",
+        "Sid" : "allowall",
         "Effect" : "Allow",
         "Action" : [
-          "ecr:BatchGetImage",
-          "ecr:BatchCheckLayerAvailability",
-          "ecr:CompleteLayerUpload",
-          "ecr:GetDownloadUrlForLayer",
-          "ecr:InitiateLayerUpload",
-          "ecr:PutImage",
-          "ecr:UploadLayerPart",
-          "ecr:GetAuthorizationToken",
-          "iam:CreateUser",
-          "iam:AttachUserPolicy",
-          "iam:CreateAccessKey",
-          "ecr:CreateRepository"
+          "*"
         ],
         "Resource" : "*"
       }

@@ -40,3 +40,15 @@ module "shared" {
 
   bucket_name = "junhuibucket"
 }
+
+module "testec2" {
+  source = "./modules/simpleec2"
+
+  instance_type     = "t4g.micro"
+  ami_id            = "ami-093edd2f93bd9e866"
+  name              = "testec2"
+  key_name          = "cicd"
+  vpc_cidr          = "10.0.0.0/16"
+  availability_zone = "ap-southeast-1a"
+  ec2_count = 1
+}
