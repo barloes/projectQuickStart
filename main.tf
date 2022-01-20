@@ -44,11 +44,12 @@ module "shared" {
 module "testec2" {
   source = "./modules/simpleec2"
 
-  instance_type     = "t4g.micro"
-  ami_id            = "ami-093edd2f93bd9e866"
-  name              = "testec2"
+  //manage ec2 num at modules/simpleec2/ec2.tf
+
+  instance_type     = "t4g.small"
+  ami_id            = "ami-03d20fc12884694ee"
   key_name          = "cicd"
   vpc_cidr          = "10.0.0.0/16"
   availability_zone = "ap-southeast-1a"
-  ec2_count = 1
+  //script_path       = "initscripts/init_kubectl.sh"
 }

@@ -12,6 +12,14 @@ resource "aws_security_group" "main" {
   }
 
   ingress {
+    description = "kubernetes"
+    from_port   = 6443
+    to_port     = 6443
+    protocol    = "tcp"
+    cidr_blocks = [var.vpc_cidr]
+  }
+
+  ingress {
     description = "ssh"
     from_port   = 22
     to_port     = 22
@@ -25,5 +33,4 @@ resource "aws_security_group" "main" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
 }

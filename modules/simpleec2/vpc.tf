@@ -4,9 +4,6 @@ resource "aws_vpc" "main" {
   enable_dns_support   = true
   enable_dns_hostnames = true
 
-  tags = {
-    Name = var.name
-  }
 }
 
 resource "aws_internet_gateway" "gw" {
@@ -27,7 +24,4 @@ resource "aws_default_route_table" "example" {
     gateway_id = aws_internet_gateway.gw.id
   }
 
-  tags = {
-    Name = var.name
-  }
 }
